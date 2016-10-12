@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-//HUGE WIP, DON'T USE
+//By:Matt Braden
 public class LayerChangeCS : MonoBehaviour {
-
+//HUGE WIP, DON'T USE
 	// Use this for initialization
 	void Start () {
 	
