@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Threading;
-
+//By:Matt Braden
 public class MovementCS : MonoBehaviour {
 	//Used to manipulate the rigidbody (an object that you can apply physics to
 	public Rigidbody2D rb;
