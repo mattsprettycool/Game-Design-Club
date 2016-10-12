@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+//HUGE WIP, DON'T USE
 public class LayerChangeCS : MonoBehaviour {
 
 	// Use this for initialization
