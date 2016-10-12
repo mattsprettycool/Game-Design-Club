@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+//By:Matt Braden
 public class CameraFollow : MonoBehaviour {
 	//defines the character to reference
 	public GameObject ye;
