@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using System.Threading;
-//By:Matt Braden
+//By: Matt Braden
 public class MovementCS : MonoBehaviour {
 	//Used to manipulate the rigidbody (an object that you can apply physics to
 	public Rigidbody2D rb;
 	//You can change this value in the 'inspector' because it is a 'public' variable
 	public float maxSpeed = 5;
+	//bool is a true/false statement
+	public bool canJump = false;
 	//this happens when the game starts
 	void Start () {
 		//this assigns the rigidbody to the one this is attached to
@@ -26,9 +28,11 @@ public class MovementCS : MonoBehaviour {
 		if (rb.velocity.magnitude > maxSpeed)
 			rb.velocity = maxSpeed * rb.velocity.normalized;
 		//Input.GetKeyDown will only activate when it is pressed, but getkey will update as long as it is held
-		if(Input.GetKeyDown("up")){
+		if(Input.GetKeyDown("up")&&canJump==true){
 			//adds force to the rigidbody in the specified direction.
 			rb.AddForce (transform.up*(speed+1500));
+			//Ensures that you cant 'fly'
+			canJump = false;
 		}if(Input.GetKey("left")){
 			rb.AddForce ((-1*transform.right)*speed);
 		}if(Input.GetKey("right")){
@@ -36,5 +40,14 @@ public class MovementCS : MonoBehaviour {
 		}
 		//changes the pos to the posx,y 
 		gameObject.transform.position = new Vector2(posx,posy);
+	}
+	void OnCollisionEnter2D(Collision2D col){
+		//the three different layers are referenced, and will be updated when layer swapping is a thing
+		if (col.gameObject.tag == "Purple")
+			canJump = true;
+		if (col.gameObject.tag == "Red")
+			canJump = true;
+		if (col.gameObject.tag == "Blue")
+			canJump = true;
 	}
 }
