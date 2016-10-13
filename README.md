@@ -1,4 +1,4 @@
-# Welcome (GIVE ME YOUR USERNAME ON GITHUB OVER SKYPE)
+# Welcome (GIVE ME YOUR USERNAME ON GITHUB OVER DISCORD)
 You need a profile on this site to do anything.
 Click upload files and drag your scripts in.
 Use C#, not Java.
