@@ -10,6 +10,7 @@ public class MovementCS : MonoBehaviour {
 	//bool is a true/false statement
 	public bool canJump = false;
 	//this happens when the game starts
+	public int colorChange = 1;
 	void Start () {
 		//this assigns the rigidbody to the one this is attached to
 		rb = GetComponent<Rigidbody2D> ();
@@ -38,6 +39,17 @@ public class MovementCS : MonoBehaviour {
 		}if(Input.GetKey("right")){
 			rb.AddForce (transform.right*speed);
 		}
+		if(Input.GetKeyDown("x")){
+			//1=red, 2=blue
+			if (colorChange == 1) {
+				colorChange++;
+				print("You are red");
+
+			} else if (colorChange == 2) {
+				colorChange--;
+				print("You are blue");
+			}
+		}
 		//changes the pos to the posx,y 
 		gameObject.transform.position = new Vector2(posx,posy);
 	}
@@ -45,9 +57,9 @@ public class MovementCS : MonoBehaviour {
 		//the three different layers are referenced, and will be updated when layer swapping is a thing
 		if (col.gameObject.tag == "Purple")
 			canJump = true;
-		if (col.gameObject.tag == "Red")
+		if (col.gameObject.tag == "Red"&&colorChange==1)
 			canJump = true;
-		if (col.gameObject.tag == "Blue")
+		if (col.gameObject.tag == "Blue"&&colorChange==2)
 			canJump = true;
 	}
 }
