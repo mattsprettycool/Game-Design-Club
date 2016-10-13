@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+//By:Jai Saka
 public class Enemy : MonoBehaviour {
 	public Rigidbody2D rb;
 	public float maxSpeed;
