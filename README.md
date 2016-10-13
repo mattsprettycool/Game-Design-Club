@@ -1,5 +1,6 @@
-# Put your scripts here!!!
-Click upload files and drag your script in.
+# Welcome
+You need a profile on this site to do anything.
+Click upload files and drag your scripts in.
 Use C#, not Java.
 put '//By:YOUR_NAME' at the beggining of your script.
 If you change someone's script, put '//Cange by YOUR_NAME' above it.
