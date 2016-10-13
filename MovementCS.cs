@@ -28,7 +28,7 @@ public class MovementCS : MonoBehaviour {
 		if (rb.velocity.magnitude > maxSpeed)
 			rb.velocity = maxSpeed * rb.velocity.normalized;
 		//Input.GetKeyDown will only activate when it is pressed, but getkey will update as long as it is held
-		if(Input.GetKeyDown("up")&&canJump==true){
+		if(Input.GetKey("up")&&canJump==true){
 			//adds force to the rigidbody in the specified direction.
 			rb.AddForce (transform.up*(speed+1500));
 			//Ensures that you cant 'fly'
