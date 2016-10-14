@@ -22,30 +22,37 @@ public class MovementCS : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		//makes the cursor invisible
 		Cursor.visible = false;
+
+		RedBox ();
+		BlueBox ();
+	}
+	public BoxCollider2D[] RedBox(){
 		reds = GameObject.FindGameObjectsWithTag ("Red");
-		blues = GameObject.FindGameObjectsWithTag ("Blue");
 		foreach (GameObject obj in reds) {
 			rX++;
 		}
+		BoxCollider2D[] redsBox= new BoxCollider2D[rX];
+		foreach (GameObject obj in reds) {
+			redsBox[rX-1] = obj.GetComponent<BoxCollider2D> ();
+		}
+		foreach (BoxCollider2D obj in redsBox) {
+			obj.enabled = true;
+		}
+		return redsBox;
+	}
+	public BoxCollider2D[] BlueBox(){
+		blues = GameObject.FindGameObjectsWithTag ("Blue");
 		foreach (GameObject obj in blues) {
 			bX++;
 		}
-		BoxCollider2D[] redsBox= new BoxCollider2D[rX];
 		BoxCollider2D[] bluesBox=new BoxCollider2D[bX];
-		foreach (GameObject obj in reds) {
-			redsBox[rX] = obj.GetComponent<BoxCollider2D> ();
-		}
 		foreach (GameObject obj in blues) {
-			bluesBox[bX] = obj.GetComponent<BoxCollider2D> ();
-		}
-		colorChange++;
-		print("You are red");
-		foreach (BoxCollider2D obj in redsBox) {
-			obj.enabled = true;
+			bluesBox[bX-1] = obj.GetComponent<BoxCollider2D> ();
 		}
 		foreach (BoxCollider2D obj in bluesBox) {
 			obj.enabled = false;
 		}
+		return bluesBox;
 	}
 	//update every FRAME (make note of that)
 	void Update () {
@@ -69,24 +76,30 @@ public class MovementCS : MonoBehaviour {
 		}if(Input.GetKey("right")){
 			rb.AddForce (transform.right*speed);
 		}
+		if(Input.GetKeyDown ("r")){
+			posx=0;
+			posy=0;
+		}
 		if(Input.GetKeyDown("x")){
+			BoxCollider2D[] redUp = RedBox ();
+			BoxCollider2D[] blueUp = BlueBox ();
 			//1=red, 2=blue
 			if (colorChange == 1) {
-				colorChange++;
+				colorChange=2;
 				print("You are red");
-				foreach (BoxCollider2D obj in redsBox) {
+				foreach (BoxCollider2D obj in redUp) {
 					obj.enabled = true;
 				}
-				foreach (BoxCollider2D obj in bluesBox) {
+				foreach (BoxCollider2D obj in blueUp) {
 					obj.enabled = false;
 				}
 			} else if (colorChange == 2) {
-				colorChange--;
+				colorChange=1;
 				print("You are blue");
-				foreach (BoxCollider2D obj in bluesBox) {
+				foreach (BoxCollider2D obj in blueUp) {
 					obj.enabled = true;
 				}
-				foreach (BoxCollider2D obj in redsBox) {
+				foreach (BoxCollider2D obj in redUp) {
 					obj.enabled = false;
 				}
 			}
