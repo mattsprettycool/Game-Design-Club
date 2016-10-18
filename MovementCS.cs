@@ -19,6 +19,7 @@ public class MovementCS : MonoBehaviour {
 	public GameObject otherB;
 	public int rX;
 	public int bX;
+	int i = 1;
 	void Start () {
 		rX = 0;
 		bX = 0;
@@ -31,6 +32,17 @@ public class MovementCS : MonoBehaviour {
 	void Update () {
 		redsBox = otherR.GetComponentsInChildren<BoxCollider2D> ();
 		bluesBox = otherB.GetComponentsInChildren<BoxCollider2D> ();
+		if (i == 1) {
+			i = 2;
+			colorChange=1;
+			print("You are blue");
+			foreach (BoxCollider2D obj in bluesBox) {
+				obj.enabled = true;
+			}
+			foreach (BoxCollider2D obj in redsBox) {
+				obj.enabled = false;
+			}
+		}
 		//you can use my posx,y code over here to move reliably, though I use the rigidbody
 		float posx = gameObject.transform.position.x;
 		float posy = gameObject.transform.position.y;
@@ -84,14 +96,14 @@ public class MovementCS : MonoBehaviour {
 		//the three different layers are referenced, and will be updated when layer swapping is a thing
 		if (col.gameObject.tag == "Purple")
 			canJump = true;
-		if (col.gameObject.tag == "Red" && colorChange == 1) {
+		if (col.gameObject.tag == "Red" && colorChange == 2) {
 			canJump = true;
-		} else if (col.gameObject.tag == "Red" && colorChange == 2) {
+		} else if (col.gameObject.tag == "Red" && colorChange == 1) {
 			canJump = false;
 		}
-		if (col.gameObject.tag == "Blue" && colorChange == 2) {
+		if (col.gameObject.tag == "Blue" && colorChange == 1) {
 			canJump = true;
-		}else if (col.gameObject.tag == "Blue" && colorChange == 1) {
+		}else if (col.gameObject.tag == "Blue" && colorChange == 2) {
 			canJump = false;
 		}
 	}
