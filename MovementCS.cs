@@ -11,7 +11,17 @@ public class MovementCS : MonoBehaviour {
 	public bool canJump = false;
 	//this happens when the game starts
 	public int colorChange = 1;
+	public GameObject[] reds;
+	public GameObject[] blues;
+	public BoxCollider2D[] redsBox;
+	public BoxCollider2D[] bluesBox;
+	public GameObject otherR;
+	public GameObject otherB;
+	public int rX;
+	public int bX;
 	void Start () {
+		rX = 0;
+		bX = 0;
 		//this assigns the rigidbody to the one this is attached to
 		rb = GetComponent<Rigidbody2D> ();
 		//makes the cursor invisible
@@ -19,6 +29,8 @@ public class MovementCS : MonoBehaviour {
 	}
 	//update every FRAME (make note of that)
 	void Update () {
+		redsBox = otherR.GetComponentsInChildren<BoxCollider2D> ();
+		bluesBox = otherB.GetComponentsInChildren<BoxCollider2D> ();
 		//you can use my posx,y code over here to move reliably, though I use the rigidbody
 		float posx = gameObject.transform.position.x;
 		float posy = gameObject.transform.position.y;
@@ -39,15 +51,30 @@ public class MovementCS : MonoBehaviour {
 		}if(Input.GetKey("right")){
 			rb.AddForce (transform.right*speed);
 		}
+		if(Input.GetKeyDown ("r")){
+			posx=0;
+			posy=0;
+		}
 		if(Input.GetKeyDown("x")){
 			//1=red, 2=blue
 			if (colorChange == 1) {
-				colorChange++;
+				colorChange=2;
 				print("You are red");
-
+				foreach (BoxCollider2D obj in redsBox) {
+					obj.enabled = true;
+				}
+				foreach (BoxCollider2D obj in bluesBox) {
+					obj.enabled = false;
+				}
 			} else if (colorChange == 2) {
-				colorChange--;
+				colorChange=1;
 				print("You are blue");
+				foreach (BoxCollider2D obj in bluesBox) {
+					obj.enabled = true;
+				}
+				foreach (BoxCollider2D obj in redsBox) {
+					obj.enabled = false;
+				}
 			}
 		}
 		//changes the pos to the posx,y 
@@ -57,9 +84,15 @@ public class MovementCS : MonoBehaviour {
 		//the three different layers are referenced, and will be updated when layer swapping is a thing
 		if (col.gameObject.tag == "Purple")
 			canJump = true;
-		if (col.gameObject.tag == "Red"&&colorChange==1)
+		if (col.gameObject.tag == "Red" && colorChange == 1) {
 			canJump = true;
-		if (col.gameObject.tag == "Blue"&&colorChange==2)
+		} else if (col.gameObject.tag == "Red" && colorChange == 2) {
+			canJump = false;
+		}
+		if (col.gameObject.tag == "Blue" && colorChange == 2) {
 			canJump = true;
+		}else if (col.gameObject.tag == "Blue" && colorChange == 1) {
+			canJump = false;
+		}
 	}
 }
