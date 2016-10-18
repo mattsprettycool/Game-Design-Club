@@ -1,10 +1,10 @@
 EXAMPLE_TO_DO | EXAMPLE_NAME | EXAMPLE_START_DATE | EXAMPLE_FINISH_DATE | FILE_NAME_ON_GITHUB (If Applies)
-Camera Following | Matt Braden | 10/11/2016 | 10/11/2016 | FILE_NAME_ON_GITHUB
-GitHub stuff | Matt Braden | 10/12/2016 | 10/12/2016 | FILE_NAME_ON_GITHUB
-Movement | Matt Braden | 10/11/2016 | 10/12/2016 | FILE_NAME_ON_GITHUB
-Switching 'Layers' | Matt Braden | 10/12/2016 | 10/18/2016 | FILE_NAME_ON_GITHUB
-Basic Enemy Path | Jai Saka | 10/12/2016 | ONGOING | FILE_NAME_ON_GITHUB
-Watch the Videos | EVERYONE | 10/11/2016 | DUE 10/18/2016 | FILE_NAME_ON_GITHUB
+Camera Following | Matt Braden | 10/11/2016 | 10/11/2016 | CameraFollow.cs
+GitHub stuff | Matt Braden | 10/12/2016 | 10/12/2016
+Movement | Matt Braden | 10/11/2016 | 10/12/2016 | MovementCS.cs
+Switching 'Layers' | Matt Braden | 10/12/2016 | 10/18/2016 | MovementCS.cs
+Basic Enemy Path | Jai Saka | 10/12/2016 | ONGOING | Enemy.cs
+Watch the Videos | EVERYONE | 10/11/2016 | DUE 10/18/2016
 Make a Basic Level Design | EVERYONE | 10/11/2016 | DUE 10/18/2016
 Make Some Mock-Enemy Designs (Make a TXT File Explaining Bring It In When WE Meet) | AVAILABLE | START_DATE | END_DATE | FILE_NAME_ON_GITHUB (optional)
 Make Some Sprites Using Basic Animations (Meaning a Two-Frame Walk-Cyle, etc. Make The Images a Single Sprite Sheet) | AVAILABLE | START_DATE | END_DATE | FILE_NAME_ON_GITHUB
