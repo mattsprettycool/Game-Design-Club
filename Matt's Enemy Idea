@@ -1,0 +1,4 @@
+My idea for an enemy is one that could either move back and forth or stay still.
+This enemy would constantly put out an AOE around it that would change layers with it every few seconds.
+When it changes colors it would wait a second so that the player could change in time.
+This enemy could pose to be a chalenge by forcing the player to quickly go past it or be forced to fall down into a different, less desireable area.
