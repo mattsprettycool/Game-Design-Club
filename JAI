@@ -1,0 +1,5 @@
+public String toString(){
+	  if(!getType().equals("Unspecified"))
+		  return ""+getType()+" - "+myStyle+"(size "+printSize(mySize)+")";
+	  return ""+myStyle+"(size "+printSize(mySize)+")";
+  }
