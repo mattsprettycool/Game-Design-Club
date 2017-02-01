@@ -3,3 +3,72 @@ public String toString(){
 		  return ""+getType()+" - "+myStyle+"(size "+printSize(mySize)+")";
 	  return ""+myStyle+"(size "+printSize(mySize)+")";
   }
+
+
+
+
+//PART B RUNNER
+import java.util.ArrayList;
+
+
+public class PartBRunner {
+	public static void main(String [] args){
+		ArrayList<Footwear> catalog = makeCatalog( 100 );
+		for ( Footwear fw : catalog )
+		  System.out.println( fw );
+
+		Footwear first = new Footwear("Sling-back", 8.5, "12345");
+		Boot second = new Boot("Hiking", 10, "67890");
+		CasualShoe third = new CasualShoe("Running Shoes", 6.5, "123456");
+				
+		System.out.println(first);//Expects Sling-back(size 8-1/2)
+		System.out.println(second);//Boot-Hiking(size 10)
+		System.out.println(third );//Casual Shoe - Running Shoes(size 6-1/2)
+		
+		
+			}
+		public static int random( int n )
+		{
+			return (int)( n * Math.random() );
+		}
+		public static ArrayList<Footwear> makeCatalog( int n ) 
+		{ 
+		  String[][] styles = 
+		  { 
+		    //Boot styles 
+		    { "Cowboy", "Hiking", "Rain", "Riding" }, 
+		    // Dress shoe styles 
+		    { "Loafer", "Oxford", "Pump", "Sling-back", "Wing-tip" }, 
+		    // Casual shoe styles 
+		    { "Athletic", "Hightop", "Moccasin", "Sandal" } 
+		  }; 
+
+		  double[] sizes = { 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 
+		                     10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14 };
+		  ArrayList<Footwear>  catalog = new ArrayList<Footwear>(); 
+		  Footwear fw; 
+
+		  for ( int i = 0; i < n; i++ ) 
+		  { 
+		    int fwType = random( styles.length ); 
+		    String[] styleList = styles[ fwType ]; 
+		    String style = styleList[ random( styleList.length ) ]; 
+		    double size = sizes[ random( sizes.length ) ]; 
+		    String sku = "1234-" + i; 
+
+		    if ( fwType == 0 ) 
+		      fw = new Boot( style, size, sku ); 
+		    else if ( fwType == 1 ) 
+		      fw = new DressShoe( style, size, sku ); 
+		    else 
+		      fw = new CasualShoe( style, size, sku ); 
+
+		    catalog.add( fw ); 
+		  } 
+
+		  return catalog; 
+		}
+
+	
+	}
+
